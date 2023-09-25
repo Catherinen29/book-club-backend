@@ -8,6 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   
   private
 
+  # Method which sets up a new user session.
   def respond_with(resource, _opts = {})
     render json: {
       status: {code: 200, message: 'Logged in sucessfully.'},
@@ -15,6 +16,7 @@ class Users::SessionsController < Devise::SessionsController
     }, status: :ok
   end
 
+  #  Method which ends the user session.
   def respond_to_on_destroy
     if current_user
       render json: {
