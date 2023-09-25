@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "application#index"
   
+  # Match the /current_user path to the current_user controller's index action.
   get '/current_user', to: 'current_user#index'
 
+  # Create the relevant routes for actions in the sessions & registrations controllers.
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -18,10 +20,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  # Match each request & path to the relevant controllers & actions.
+  # Relevant paths set up where user ID is required. 
   patch "/current_user", to: "current_user#update"
   get "/users/:id", to: "current_user#show"
  
-    get "/books/reviews", to: "reviews#index"
+  get "/books/reviews", to: "reviews#index"
   get "/books/:id/reviews", to: "reviews#show"
   post "/books/:id/reviews", to: "reviews#create"
   delete "/books/:id/reviews/:id", to: "reviews#destroy"
