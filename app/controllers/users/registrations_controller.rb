@@ -8,6 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # private
 
+  # Methods which create & delete a user in database based 
+  # on the request being made. 
   def respond_with(resource, _opts = {})
     if request.method == "POST" && resource.persisted?
       # puts "WE'RE IN THE BLOCK*******"
